@@ -1,0 +1,5 @@
+.DS_Store
+studio/node_modules/
+studio/.sanity/
+studio/dist/
+__pycache__/

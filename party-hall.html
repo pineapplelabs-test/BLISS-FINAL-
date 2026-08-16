@@ -969,6 +969,107 @@
     .stagger .r:nth-child(9) {
       transition-delay: 0.85s;
     }
+
+    /* ────────────────────── FULL MOBILE OPTIMIZATIONS ────────────────────── */
+
+    /* ── Mobile ≤768px ── */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .section-pad { padding: clamp(48px, 8vw, 80px) 0; }
+      .sec-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+      .tag { font-size: 0.62rem; }
+      .tag::before { width: 18px; }
+
+      /* Hero */
+      .hero { min-height: 70vh; min-height: 70dvh; }
+      .hero-title { font-size: clamp(2rem, 9vw, 3.5rem); margin-bottom: 18px; }
+      .hero-content { padding: clamp(24px, 5vw, 40px) 16px; }
+      .hero-label { font-size: 0.62rem; margin-bottom: 16px; }
+      .hero-desc { font-size: 0.92rem; max-width: 100%; }
+
+      /* Venue */
+      .venue-grid { grid-template-columns: 1fr; }
+      .venue-img img { height: 260px; }
+      .venue-text p { font-size: 0.92rem; margin-bottom: 20px; }
+
+      /* Services */
+      .service-card { padding: 28px 20px; }
+      .service-card h3 { font-size: 1.1rem; }
+      .service-card p { font-size: 0.82rem; }
+      .service-icon { width: 36px; height: 36px; }
+      .service-num { font-size: 0.65rem; }
+
+      /* Dance teaser */
+      .dance-img img { height: 260px; }
+      .dance-text p { font-size: 0.92rem; }
+
+      /* Contact */
+      .contact-info p { font-size: 0.92rem; }
+      .contact-items>div { font-size: 0.85rem; gap: 12px; }
+      .contact-items svg { width: 18px; height: 18px; }
+      .form-card { padding: 20px; }
+      .form-input { padding: 12px 14px; font-size: 0.88rem; }
+      .submit-btn { padding: 14px; font-size: 0.78rem; }
+
+      /* Footer */
+      .footer { padding: 40px 0 24px; }
+      .footer-top { flex-direction: column; gap: 28px; padding-bottom: 28px; }
+      .footer-nav { gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+
+      /* Nav */
+      .nav-back { font-size: 0.62rem; }
+      .nav-back img { height: 28px !important; }
+    }
+
+    /* ── Small phones ≤480px ── */
+    @media (max-width: 480px) {
+      .container { padding: 0 12px; }
+      .section-pad { padding: clamp(36px, 6vw, 56px) 0; }
+      .sec-title { font-size: 1.4rem; }
+
+      .hero { min-height: 60vh; min-height: 60dvh; }
+      .hero-title { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+      .hero-content { padding: 20px 12px; }
+      .hero-desc { font-size: 0.82rem; line-height: 1.6; }
+
+      .venue-img img { height: 200px; }
+      .venue-text p { font-size: 0.85rem; line-height: 1.7; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { padding: 20px 16px; }
+      .service-card h3 { font-size: 1rem; }
+      .service-card p { font-size: 0.78rem; }
+      .service-icon { width: 30px; height: 30px; margin-bottom: 12px; }
+      .service-num { font-size: 0.6rem; margin-bottom: 12px; }
+
+      .dance-img img { height: 200px; }
+      .dance-text p { font-size: 0.85rem; }
+
+      .contact-info p { font-size: 0.85rem; }
+      .form-card { padding: 16px; }
+      .form-group { margin-bottom: 16px; }
+      .form-group label { font-size: 0.68rem; }
+      .form-input { padding: 10px 12px; font-size: 0.85rem; }
+      .submit-btn { padding: 13px; font-size: 0.72rem; }
+
+      .footer { padding: 28px 0 18px; }
+      .footer-brand img { height: 32px; }
+      .footer-tagline { font-size: 0.78rem; }
+      .footer-nav { flex-direction: column; gap: 18px; }
+      .footer-nav-col h4 { margin-bottom: 10px; }
+      .footer-nav-col a { font-size: 0.78rem; }
+      .footer-bottom { font-size: 0.65rem; }
+      .footer-social a { width: 34px; height: 34px; }
+
+      .marquee { padding: 12px 0; }
+      .marquee-track { gap: 30px; }
+      .marquee-track span .dot { margin: 0 12px; }
+
+      /* Programs header (used in services section) */
+      .programs-header { text-align: left; }
+      .programs-header p { font-size: 0.85rem; }
+    }
   </style>
 </head>
 

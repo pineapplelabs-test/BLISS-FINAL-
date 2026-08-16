@@ -1137,6 +1137,129 @@
 
   .delay-1 { transition-delay: 0.15s; }
   .delay-2 { transition-delay: 0.3s; }
+
+  /* ────────────────────── FULL MOBILE OPTIMIZATIONS ────────────────────── */
+
+  /* ── Tablet ≤860px ── */
+  @media (max-width: 860px) {
+    .venue-teaser-text h2 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+    }
+    .venue-teaser-img img {
+      height: 280px;
+    }
+    .footer-top {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .footer-nav {
+      gap: 40px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* ── Mobile ≤768px ── */
+  @media (max-width: 768px) {
+    .nav-inner { height: 72px; }
+    .brand img { height: 36px; }
+    section { padding: clamp(40px, 6vw, 60px) 0; }
+    .container { padding: 0 16px; }
+    .heading-xl { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+    .heading-lg { font-size: clamp(1.5rem, 5vw, 2rem); }
+    .hero-subtitle { font-size: 0.92rem; }
+
+    .about-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat-num { font-size: 1.6rem; }
+    .about-text p { font-size: 0.92rem; }
+
+    .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .card-img-wrap { height: 180px; }
+    .card-content-wrap { padding: 20px; }
+    .filter-tabs { gap: 8px; margin-bottom: 24px; }
+    .filter-btn { padding: 8px 18px; font-size: 0.72rem; }
+
+    .venue-teaser-img img { height: 220px; }
+    .venue-teaser-text p { font-size: 0.92rem; }
+
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-info-panel { padding-right: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-card { padding: 20px; }
+    .form-toggle-btn { font-size: 0.72rem; padding: 10px 6px; }
+    .form-control { padding: 12px 14px; font-size: 0.88rem; }
+    .btn { padding: 12px 24px; font-size: 0.72rem; }
+
+    .footer { padding: 40px 0 24px; }
+    .footer-logo { max-width: 100%; }
+    .footer-nav { gap: 28px; width: 100%; }
+    .footer-col h4 { margin-bottom: 10px; }
+    .footer-col a { font-size: 0.82rem; }
+
+    .whatsapp-chat { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 0.78rem; }
+  }
+
+  /* ── Small phones ≤480px ── */
+  @media (max-width: 480px) {
+    .container { padding: 0 12px; }
+    section { padding: clamp(32px, 5vw, 48px) 0; }
+    .heading-xl { font-size: 1.6rem; }
+    .heading-lg { font-size: 1.35rem; }
+    .hero { min-height: calc(100vh - 72px); padding: 12px 0; }
+    .hero-header { margin-bottom: 16px; }
+    .hero-subtitle { font-size: 0.82rem; line-height: 1.5; }
+    .label { font-size: 0.62rem; gap: 6px; }
+    .label::before { width: 16px; }
+
+    .hero-cards-grid { grid-template-columns: 1fr; gap: 12px; max-width: 100%; }
+    .hero-card-img { height: 140px; }
+    .hero-card-body { padding: 14px; }
+    .hero-card-title { font-size: 1.05rem; }
+    .hero-card-text { font-size: 0.78rem; margin-bottom: 10px; display: block; }
+    .hero-card-actions { flex-direction: column; gap: 8px; }
+    .btn-card { min-width: unset; width: 100%; padding: 10px 16px; font-size: 0.68rem; }
+
+    .about-grid { gap: 24px; }
+    .about-image { aspect-ratio: 16/10; }
+    .about-stats { gap: 8px; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-lbl { font-size: 0.62rem; }
+
+    .card-img-wrap { height: 160px; }
+    .card-content-wrap { padding: 16px; }
+    .card-title { font-size: 1.1rem; }
+    .card-desc { font-size: 0.82rem; margin-bottom: 14px; }
+
+    .venue-teaser-text h2 { font-size: 1.4rem; }
+    .venue-teaser-text p { font-size: 0.85rem; line-height: 1.6; }
+    .venue-teaser-img img { height: 180px; }
+
+    .section-header p { font-size: 0.9rem; }
+    .contact-row { gap: 12px; }
+    .contact-icon { width: 36px; height: 36px; }
+    .contact-icon svg { width: 16px; height: 16px; }
+    .contact-text h4 { font-size: 0.78rem; }
+    .contact-text p { font-size: 0.85rem; }
+    .form-card { padding: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { font-size: 0.65rem; }
+    .form-control { padding: 10px 12px; font-size: 0.85rem; }
+
+    .footer { padding: 32px 0 20px; }
+    .footer-top { padding-bottom: 24px; margin-bottom: 16px; }
+    .footer-logo img { height: 36px; }
+    .footer-tagline { font-size: 0.78rem; }
+    .footer-nav { flex-direction: column; gap: 20px; }
+    .footer-bottom { font-size: 0.68rem; gap: 10px; }
+
+    .whatsapp-chat {
+      padding: 10px; font-size: 0; border-radius: 50%;
+      width: 48px; height: 48px; justify-content: center;
+    }
+    .whatsapp-chat svg { width: 22px; height: 22px; }
+  }
 </style>
 </head>
 <body>

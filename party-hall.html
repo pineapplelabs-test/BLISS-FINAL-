@@ -1315,56 +1315,76 @@
   <!-- CONTACT -->
   <section class="contact section-pad" id="contact">
     <div class="container">
+      <!-- CENTERED HEADER -->
+      <div class="contact-header" style="text-align: center; max-width: 600px; margin: 0 auto 48px;">
+        <div class="tag" style="justify-content: center; margin: 0 auto 16px; display: inline-flex;">Booking &amp; Rates</div>
+        <h2 class="sec-title">Check date <span class="accent">availability.</span></h2>
+        <p style="color: var(--text-soft); font-size: 1.02rem; line-height: 1.85; margin: 16px 0 0 0; max-width: 100%;">Let us know your event dates and what services you require. Our event coordination team will get in touch with rate cards.</p>
+      </div>
+
       <div class="contact-grid">
-        <div class="contact-info r">
-          <div class="tag">Booking &amp; Rates</div>
-          <h2 class="sec-title">Check date<br><span class="accent">availability.</span></h2>
-          <p>Let us know your event dates and what services you require. Our event coordination team will get in touch
-            with rate cards.</p>
-          <div class="contact-items">
-            <div>
-              <svg viewBox="0 0 24 24">
+        <div class="form-card contact-info r" style="display: flex; flex-direction: column;">
+          <h3 style="font-size: 1.6rem; font-family: var(--ff-serif); margin-bottom: 8px; color: var(--text); margin-top: 0;">BLISS Complex</h3>
+          <p style="font-size: 0.85rem; color: #a18b5b; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 32px; margin-top: 0; max-width: 100%;">VIGNAN NAGAR BRANCH</p>
+          
+          <div class="contact-items" style="margin-bottom: 24px;">
+            <div style="align-items: flex-start; margin-bottom: 16px;">
+              <svg viewBox="0 0 24 24" style="margin-top: 4px; flex-shrink: 0; stroke: #d90429;">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              <span>BLISS Complex, Bangalore</span>
+              <span style="line-height: 1.6; color: var(--text); font-weight: 400;">2nd Floor, Keerthi Mansion, 13/14, Vignan Nagar Main Rd, opposite to Hayagriva School, above Jockey Showroom, Vignan Nagar, Malleshpalya, Doddanekkundi, Bengaluru, Karnataka 560075</span>
             </div>
             <div>
-              <svg viewBox="0 0 24 24">
+              <svg viewBox="0 0 24 24" style="stroke: #d90429;">
                 <path
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              <span>+91 97415 73003</span>
+              <span style="color: var(--text); font-weight: 400;">Mobile: <span style="color: #a18b5b; font-weight: 500;">063668 74524</span></span>
             </div>
+          </div>
+          <div class="map-card" style="margin-top: auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); min-height: 250px; flex-grow: 1;">
+            <iframe src="https://www.google.com/maps?q=12.973397850262941,77.67862121903879&output=embed" width="100%" height="100%" style="border:0; display: block; min-height: 250px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 
-        <form class="form-card r r-2" id="venueForm" onsubmit="return false;">
+        <form class="form-card r r-2" id="contactForm" onsubmit="return false;" style="display: flex; flex-direction: column;">
+          <h3 style="font-size: 2rem; font-family: var(--ff-serif); margin-bottom: 12px; color: var(--text); margin-top: 0;">Send Us a Message</h3>
+          <p style="font-size: 1.05rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 32px; margin-top: 0;">Fill out the form below and our coordinators will reach back to schedule your session!</p>
+
           <div class="form-group">
-            <label for="hostName">Host Name</label>
-            <input type="text" class="form-input" id="hostName" placeholder="Full name of the host" />
+            <label for="fullName">FULL NAME *</label>
+            <input type="text" class="form-input" id="fullName" placeholder="Enter your full name" required />
           </div>
-          <div class="form-group">
-            <label for="hostPhone">Contact Number</label>
-            <input type="tel" class="form-input" id="hostPhone" placeholder="+91" />
+
+          <div style="display: flex; gap: 20px;">
+            <div class="form-group" style="flex: 1;">
+              <label for="mobileNumber">MOBILE NUMBER *</label>
+              <input type="tel" class="form-input" id="mobileNumber" placeholder="+91 98765 43210" required />
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label for="emailAddress">EMAIL ADDRESS</label>
+              <input type="email" class="form-input" id="emailAddress" placeholder="name@domain.com" />
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="occasionType">Occasion</label>
-            <select class="form-input" id="occasionType">
-              <option value="" disabled selected>Select an occasion</option>
-              <option>Student Recital / Showcase</option>
-              <option>Milestone Birthday</option>
-              <option>Private Family Function</option>
-              <option>Stage / Kid's Show</option>
-              <option>Other Occasion</option>
+            <label for="inquiryType">INQUIRY TYPE *</label>
+            <select class="form-input" id="inquiryType" required>
+              <option value="General Inquiry" selected>General Inquiry</option>
+              <option value="Trial Class">Trial Class</option>
+              <option value="Venue Booking">Venue Booking</option>
+              <option value="Pricing / Rates">Pricing / Rates</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="eventDate">Preferred Date</label>
-            <input type="date" class="form-input" id="eventDate" />
+            <label for="messageBody">MESSAGE *</label>
+            <textarea class="form-input" id="messageBody" placeholder="Which class are you interested in? Any questions?" rows="4" style="resize: vertical; min-height: 100px; padding-top: 14px; font-family: inherit;" required></textarea>
           </div>
-          <button type="button" class="submit-btn" onclick="submitVenue(this)" id="submitBtn">
-            Send Booking Enquiry →
+
+          <button type="submit" class="submit-btn" onclick="submitVenue(this)" style="margin-top: auto; background: var(--text); color: #fff; width: 100%; border-radius: 30px; padding: 18px 24px; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            Send Message ✨
           </button>
         </form>
       </div>
@@ -1477,14 +1497,15 @@
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxONwgaztCPQeFSBsyVhrXmAdO7gV5YzzJILwItvh34fhqsVAemdGIrBwNdJX6HgZFh/exec'; // Paste your Web App URL here
 
     function submitVenue(btn) {
-      const name = document.getElementById('hostName');
-      const phone = document.getElementById('hostPhone');
-      const occasion = document.getElementById('occasionType');
-      const date = document.getElementById('eventDate');
+      const name = document.getElementById('fullName');
+      const phone = document.getElementById('mobileNumber');
+      const email = document.getElementById('emailAddress');
+      const occasion = document.getElementById('inquiryType');
+      const message = document.getElementById('messageBody');
       let valid = true;
-      [name, phone, occasion].forEach(el => {
-        if (!el.value) {
-          el.style.borderColor = 'var(--primary)';
+      [name, phone, occasion, message].forEach(el => {
+        if (!el || !el.value) {
+          if (el) el.style.borderColor = 'var(--primary)';
           valid = false;
         } else {
           el.style.borderColor = 'var(--border)';
@@ -1493,7 +1514,7 @@
       if (!valid) return;
 
       const msg = encodeURIComponent(
-        `Hi, I'd like to enquire about booking the BLISS Party Hall.\n\nHost: ${name.value}\nOccasion: ${occasion.value}\nDate: ${date.value || 'Flexible'}`
+        `Hi, I'd like to enquire about booking the BLISS Party Hall.\n\nName: ${name.value}\nEmail: ${email ? email.value : ''}\nOccasion: ${occasion.value}\nMessage: ${message.value}`
       );
 
       if (SCRIPT_URL && SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
@@ -1505,8 +1526,9 @@
         formData.append('formType', 'Party Hall Enquiry');
         formData.append('name', name.value);
         formData.append('phone', phone.value);
+        formData.append('email', email ? email.value : '');
         formData.append('interest', occasion.value);
-        formData.append('date', date.value);
+        formData.append('message', message.value);
 
         fetch(SCRIPT_URL, {
           method: 'POST',

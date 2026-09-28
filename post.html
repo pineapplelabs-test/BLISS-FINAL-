@@ -1206,22 +1206,36 @@
       </ul>
     </div>
   </nav>
-  <section class="hero" style="min-height: auto; margin-top: 90px; padding: 60px 0 20px;">
-    <div class="container">
-      <div class="hero-header" style="max-width: 800px; margin: 0 auto; text-align: left;">
-        <span class="label" id="post-date">Loading...</span>
-        <h1 class="heading-lg hero-main-title" id="post-title" style="margin-top:20px; margin-bottom: 20px;">Loading Post...</h1>
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <section class="hero" style="min-height: auto; margin-top: 90px; padding: 60px 0 20px;">
+      <div class="container">
+        <div class="hero-header" style="max-width: 800px; margin: 0 auto; text-align: left;">
+          <div style="display:flex; align-items:center; gap:16px; margin-bottom: 12px; flex-wrap: wrap;">
+            <span class="label" id="post-date" itemprop="datePublished">Loading...</span>
+            <span style="font-size: 0.9rem; color: var(--text-soft); font-weight: 500;" id="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+              By <span itemprop="name" style="color: var(--primary); font-weight:600;">Sandeep</span> • Studio Lead & Founder
+            </span>
+          </div>
+          <h1 class="heading-lg hero-main-title" id="post-title" itemprop="headline" style="margin-top:10px; margin-bottom: 24px;">Loading Post...</h1>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="post-content" style="padding: 20px 0 100px;">
-    <div class="container" style="max-width: 800px; margin: 0 auto;">
-      <div id="post-image" style="margin-bottom: 40px; border-radius: 12px; overflow: hidden;"></div>
-      <div id="post-body" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-soft);">
+    <section class="post-content" style="padding: 10px 0 100px;">
+      <div class="container" style="max-width: 800px; margin: 0 auto;">
+        <div id="post-image" itemprop="image" style="margin-bottom: 30px; border-radius: 12px; overflow: hidden;"></div>
+        
+        <!-- GEO GENERATIVE ENGINE EXTRACT BOX -->
+        <div id="geo-summary-box" style="display:none; background: #FAF7F2; border-left: 4px solid var(--primary); padding: 20px 24px; border-radius: 0 12px 12px 0; margin-bottom: 36px;">
+          <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 6px;">Key Takeaway & Quick Answer (GEO)</div>
+          <p id="geo-summary-text" itemprop="description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text); margin: 0;"></p>
+        </div>
+
+        <div id="post-body" itemprop="articleBody" style="font-size: 1.1rem; line-height: 1.85; color: var(--text-soft);">
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </article>
 
   <script type="module">
     import { createClient } from 'https://esm.sh/@sanity/client'
@@ -1300,7 +1314,21 @@
         
         document.getElementById('post-body').innerHTML = renderPortableText(post.body);
 
-        // Dynamic Schema.org BlogPosting + Geo Entity
+        // Populate GEO Quick Takeaway Box
+        if (post.body && Array.isArray(post.body)) {
+          const firstPara = post.body.find(b => b.style === 'normal' && b.children && b.children.length > 0);
+          if (firstPara) {
+            const summaryText = firstPara.children.map(c => c.text).join('');
+            const box = document.getElementById('geo-summary-box');
+            const boxText = document.getElementById('geo-summary-text');
+            if (box && boxText && summaryText) {
+              boxText.innerText = summaryText;
+              box.style.display = 'block';
+            }
+          }
+        }
+
+        // Dynamic Schema.org BlogPosting + Geo Entity + Speakable for AI Engines
         const schema = {
           "@context": "https://schema.org",
           "@type": "BlogPosting",
@@ -1308,10 +1336,15 @@
           "image": post.mainImage?.asset?.url || "https://www.bliss.ind.in/logo-red.png",
           "datePublished": post.publishedAt,
           "dateModified": post.publishedAt,
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["#post-title", "#geo-summary-text"]
+          },
           "author": {
             "@type": "Person",
             "name": "Sandeep",
             "jobTitle": "Studio Lead & Founder",
+            "knowsAbout": ["Dance Education", "Choreography", "Event Hosting", "Banquet Management"],
             "url": "https://www.bliss.ind.in/"
           },
           "publisher": {

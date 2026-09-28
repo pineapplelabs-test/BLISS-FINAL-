@@ -1216,9 +1216,6 @@
     </div>
   </section>
 
-  <!-- Include Portable Text to HTML compiler -->
-  <script src="https://unpkg.com/@portabletext/to-html@2.0.0/dist/index.umd.js"></script>
-  
   <script type="module">
     import { createClient } from 'https://esm.sh/@sanity/client'
     
@@ -1228,6 +1225,44 @@
       useCdn: true,
       apiVersion: '2023-05-03',
     })
+
+    function renderPortableText(blocks) {
+      if (!blocks || !Array.isArray(blocks)) return '';
+      let html = '';
+      let inList = false;
+
+      for (const block of blocks) {
+        if (block._type === 'image' && block.asset?._ref) {
+          if (inList) { html += '</ul>'; inList = false; }
+          const cleanRef = block.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png').replace('-webp', '.webp');
+          html += `<img src="https://cdn.sanity.io/images/ba1hmt7m/production/${cleanRef}" style="width:100%; border-radius:12px; margin:24px 0;" />`;
+          continue;
+        }
+
+        if (block._type !== 'block' || !block.children) continue;
+
+        const text = block.children.map(c => c.text || '').join('');
+
+        if (block.listItem === 'bullet') {
+          if (!inList) { html += '<ul style="margin: 16px 0 24px; padding-left: 24px; line-height: 1.85;">'; inList = true; }
+          html += `<li style="margin-bottom: 10px;">${text}</li>`;
+          continue;
+        } else if (inList) {
+          html += '</ul>';
+          inList = false;
+        }
+
+        if (block.style === 'h2') {
+          html += `<h2 style="font-size: 1.8rem; margin: 36px 0 16px; color: var(--text, #111); font-family: var(--ff-serif, serif); line-height: 1.3;">${text}</h2>`;
+        } else if (block.style === 'h3') {
+          html += `<h3 style="font-size: 1.35rem; margin: 28px 0 12px; color: var(--text, #111); line-height: 1.4;">${text}</h3>`;
+        } else {
+          html += `<p style="margin-bottom: 20px; line-height: 1.85; font-size: 1.05rem; color: var(--text-soft, #444);">${text}</p>`;
+        }
+      }
+      if (inList) html += '</ul>';
+      return html;
+    }
     
     async function loadPost() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -1255,14 +1290,7 @@
           document.getElementById('post-image').innerHTML = `<img src="${post.mainImage.asset.url}" style="width: 100%; height: auto;" alt="${post.title}" />`;
         }
         
-        const htmlBody = window.PortableText.toHTML(post.body, {
-           components: {
-             types: {
-               image: ({value}) => `<img src="https://cdn.sanity.io/images/ba1hmt7m/production/${value.asset._ref.replace('image-','').replace('-jpg','.jpg').replace('-png','.png')}" style="width:100%; border-radius:12px; margin:20px 0;" />`
-             }
-           }
-        });
-        document.getElementById('post-body').innerHTML = htmlBody;
+        document.getElementById('post-body').innerHTML = renderPortableText(post.body);
         
       } catch (err) {
         console.error(err);

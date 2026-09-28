@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>BLISS — Fine Dance Studio & Premium Event Hall</title>
 <meta name="description" content="BLISS — Bangalore's premium dance studio and bespoke party hall. A light-filled luxury space for creative movement and celebrations." />
+
+<!-- GEO LOCAL SEO & GENERATIVE ENGINE OPTIMIZATION (GEO) -->
+<meta name="geo.region" content="IN-KA" />
+<meta name="geo.placename" content="Bengaluru" />
+<meta name="geo.position" content="12.973398;77.678621" />
+<meta name="ICBM" content="12.973398, 77.678621" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1284,6 +1291,7 @@
         }
         
         document.getElementById('post-title').innerText = post.title;
+        document.title = `${post.title} — BLISS Dance Studio & Party Hall Vignan Nagar`;
         document.getElementById('post-date').innerText = new Date(post.publishedAt).toLocaleDateString();
         
         if (post.mainImage?.asset?.url) {
@@ -1291,6 +1299,52 @@
         }
         
         document.getElementById('post-body').innerHTML = renderPortableText(post.body);
+
+        // Dynamic Schema.org BlogPosting + Geo Entity
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "image": post.mainImage?.asset?.url || "https://www.bliss.ind.in/logo-red.png",
+          "datePublished": post.publishedAt,
+          "dateModified": post.publishedAt,
+          "author": {
+            "@type": "Person",
+            "name": "Sandeep",
+            "jobTitle": "Studio Lead & Founder",
+            "url": "https://www.bliss.ind.in/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "BLISS Dance Studio & Party Hall",
+            "url": "https://www.bliss.ind.in/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.bliss.ind.in/logo-red.png"
+            }
+          },
+          "contentLocation": {
+            "@type": "Place",
+            "name": "BLISS Dance Studio & Party Hall",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 12.973398,
+              "longitude": 77.678621
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2nd Floor, Keerthi Mansion, 13/14, Vignan Nagar Main Rd, opposite Hayagriva School",
+              "addressLocality": "Malleshpalya, Doddanekkundi, Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560075",
+              "addressCountry": "IN"
+            }
+          }
+        };
+        const scriptEl = document.createElement('script');
+        scriptEl.type = 'application/ld+json';
+        scriptEl.textContent = JSON.stringify(schema);
+        document.head.appendChild(scriptEl);
         
       } catch (err) {
         console.error(err);
